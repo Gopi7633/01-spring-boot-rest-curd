@@ -1,9 +1,14 @@
 package com.restcurd.controller;
 
 import com.restcurd.entity.Student;
+import com.restcurd.exception.StudentErrorResponse;
+import com.restcurd.exception.StudentNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +34,30 @@ public class StudentRestController {
 
     @GetMapping("/student/{studentId}")
     private Student getStudentById(@PathVariable int studentId){
+
+        if ((studentId >= studentList.size() || (studentId < 0))){
+          //  throw new RuntimeException("student id not found " + studentId);
+            throw new StudentNotFoundException("student id not found " + studentId);
+        }
+
         return studentList.get(studentId);
+    }
+
+    @ExceptionHandler
+    ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exe){
+        StudentErrorResponse response = new StudentErrorResponse();
+        response.setStatus(HttpStatus.NOT_FOUND.value());
+        response.setMessage(exe.getMessage());
+        response.setTimestamp(LocalDateTime.now());
+        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    ResponseEntity<StudentErrorResponse> handleException(Exception exe){
+        StudentErrorResponse response = new StudentErrorResponse();
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setMessage(exe.getMessage());
+        response.setTimestamp(LocalDateTime.now());
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 }
