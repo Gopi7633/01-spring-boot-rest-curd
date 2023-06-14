@@ -1,10 +1,8 @@
 package com.restcurd.controller;
 
-import com.restcurd.dao.EmployeeDAO;
 import com.restcurd.entity.EmployeeEntity;
 import com.restcurd.exception.StudentNotFoundException;
 import com.restcurd.service.EmployeeService;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
