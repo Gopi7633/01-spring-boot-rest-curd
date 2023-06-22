@@ -40,13 +40,6 @@ public class InstructorServiceImpl implements InstructorService{
         return "Instructor is deleted successfully! instructorId is : " + instructorId;
     }
 
-/*    @Transactional
-    @Override
-    public InstructorDetail saveInstructorDetail(InstructorDetail instructorDetail) {
-        InstructorDetail savedInstructorDetail = instructorDetailRepository.save(instructorDetail);
-        return savedInstructorDetail;
-    }
-
     @Override
     public InstructorDetail getInstructorDetail(long instructorDetailId) {
         Optional<InstructorDetail> instructorDetailOptional = instructorDetailRepository.findById(instructorDetailId);
@@ -58,5 +51,6 @@ public class InstructorServiceImpl implements InstructorService{
     public String deleteInstructorDetail(long instructorDetailId) {
         instructorDetailRepository.deleteById(instructorDetailId);
         return "InstructorDetail is deleted successfully! instructorDetailId is : " + instructorDetailId;
-    }*/
+    }
+
 }

@@ -10,9 +10,6 @@ public interface InstructorService {
 
     String deleteInstructor(long instructorId);
 
-/*    InstructorDetail saveInstructorDetail(InstructorDetail instructorDetail);
-
     InstructorDetail getInstructorDetail(long instructorDetailId);
-
-    String deleteInstructorDetail(long instructorDetailId);*/
+    String deleteInstructorDetail(long instructorDetailId);
 }

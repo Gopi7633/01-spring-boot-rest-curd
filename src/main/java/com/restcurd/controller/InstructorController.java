@@ -29,11 +29,6 @@ public class InstructorController {
         return instructorService.deleteInstructor(instructorId);
     }
 
-   /* @PostMapping("/instructorDetail")
-    public InstructorDetail saveInstructorDetail(@RequestBody InstructorDetail instructorDetail){
-        return instructorService.saveInstructorDetail(instructorDetail);
-    }
-
     @GetMapping("/instructorDetail/{instructorDetailId}")
     public InstructorDetail getInstructorDetail(@PathVariable long instructorDetailId){
         return instructorService.getInstructorDetail(instructorDetailId);
@@ -43,6 +38,6 @@ public class InstructorController {
     public String deleteInstructorDetail(@PathVariable long instructorDetailId){
         return instructorService.deleteInstructorDetail(instructorDetailId);
     }
-*/
+
 
 }
