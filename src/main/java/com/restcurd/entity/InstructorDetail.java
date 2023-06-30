@@ -22,7 +22,12 @@ public class InstructorDetail {
     @Column(name="hobby")
     private String hobby;
 
-    @OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL)
+//    @OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    private Instructor instructor;
+
+    @OneToOne(mappedBy = "instructorDetail",cascade = {
+            CascadeType.DETACH,CascadeType.MERGE,
+            CascadeType.MERGE, CascadeType.REFRESH},fetch = FetchType.LAZY)
     private Instructor instructor;
 }
 

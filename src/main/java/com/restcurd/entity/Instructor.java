@@ -3,6 +3,7 @@ package com.restcurd.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,12 +28,23 @@ public class Instructor {
     @Column(name="email")
     private String email;
 
-/*    @Column(name="instructor_detail_id")
-    private long instructorDetailId;*/
+//    @Column(name="instructor_detail_id")
+//    private long instructorDetailId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+/*    @OneToOne(cascade = {
+            CascadeType.PERSIST,CascadeType.DETACH,
+            CascadeType.MERGE,CascadeType.REFRESH },fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_detail_id")
+    private InstructorDetail instructorDetail;*/
+
+//    @OneToMany(mappedBy = "instructor",
+//            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+//                    CascadeType.DETACH, CascadeType.REFRESH})
+//    private List<Course> courses;
 }
 
 
